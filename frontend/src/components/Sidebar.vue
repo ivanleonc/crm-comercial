@@ -3,13 +3,15 @@
     <div class="sidebar-content">
       <ul class="sidebar-menu">
         <li>
-          <a href="#" class="sidebar-link" :class="{ 'active': vistaActiva === 'tablero' }" @click.prevent="$emit('cambiar-vista', 'tablero')">
+          <a href="#" class="sidebar-link" :class="{ 'active': vistaActiva === 'tablero' }"
+            @click.prevent="$emit('cambiar-vista', 'tablero')">
             <i class="ti ti-layout-dashboard sidebar-icon"></i>
             <span class="link-text">Tablero</span>
           </a>
         </li>
         <li>
-          <a href="#" class="sidebar-link" :class="{ 'active': vistaActiva === 'prospectos' }" @click.prevent="$emit('cambiar-vista', 'prospectos')">
+          <a href="#" class="sidebar-link" :class="{ 'active': vistaActiva === 'prospectos' }"
+            @click.prevent="$emit('cambiar-vista', 'prospectos')">
             <i class="ti ti-users sidebar-icon"></i>
             <span class="link-text">Prospectos</span>
           </a>
@@ -21,7 +23,7 @@
           </a>
         </li>
         <li>
-          <a href="#" class="sidebar-link">
+          <a href="#" class="sidebar-link" @click.prevent="$emit('abrir-configuracion')">
             <i class="ti ti-settings sidebar-icon"></i>
             <span class="link-text">Configuración</span>
           </a>
@@ -39,7 +41,7 @@ defineProps({
   }
 });
 
-defineEmits(['abrir-reportes', 'cambiar-vista']);
+defineEmits(['abrir-reportes', 'cambiar-vista', 'abrir-configuracion']);
 </script>
 
 <style scoped>
@@ -47,13 +49,16 @@ defineEmits(['abrir-reportes', 'cambiar-vista']);
   width: 72px;
   background-color: var(--bg-surface);
   border-right: 1px solid var(--border-color);
-  height: calc(100vh - 72px); /* Altura total menos el navbar */
+  height: calc(100vh - 72px);
+  /* Altura total menos el navbar */
   position: fixed;
-  top: 72px; /* Debajo del navbar */
+  top: 72px;
+  /* Debajo del navbar */
   left: 0;
   overflow-y: hidden;
   overflow-x: hidden;
-  box-shadow: 2px 0 8px -2px rgba(0, 0, 0, 0.05); /* Sombra suave a la derecha */
+  box-shadow: 2px 0 8px -2px rgba(0, 0, 0, 0.05);
+  /* Sombra suave a la derecha */
   z-index: 800;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -96,7 +101,8 @@ defineEmits(['abrir-reportes', 'cambiar-vista']);
   color: var(--text-muted);
   transition: all 0.2s ease;
   flex-shrink: 0;
-  font-size: 1.25rem; /* Ajuste para webfont (ocupa el lugar de width/height) */
+  font-size: 1.25rem;
+  /* Ajuste para webfont (ocupa el lugar de width/height) */
 }
 
 .link-text {
