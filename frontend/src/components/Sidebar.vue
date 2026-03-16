@@ -93,7 +93,7 @@ defineEmits(['abrir-reportes', 'cambiar-vista']);
 }
 
 .sidebar-icon {
-  color: #94a3b8;
+  color: var(--text-muted);
   transition: all 0.2s ease;
   flex-shrink: 0;
   font-size: 1.25rem; /* Ajuste para webfont (ocupa el lugar de width/height) */
@@ -112,7 +112,7 @@ defineEmits(['abrir-reportes', 'cambiar-vista']);
 }
 
 .sidebar-link:hover {
-  background-color: #f1f5f9;
+  background-color: var(--bg-element);
   color: var(--primary);
 }
 

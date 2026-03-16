@@ -29,9 +29,9 @@
             </button>
           </li>
           <li>
-            <button class="dropdown-item" @click.stop="$emit('toggle-tema'); closeDropdown()">
-              <i class="ti ti-moon"></i>
-              Modo Oscuro
+            <button class="dropdown-item" @click.stop="toggleThemeMode(); closeDropdown()">
+              <i :class="themeIconClass"></i>
+              Modo: {{ themeText }}
             </button>
           </li>
         </ul>
@@ -53,6 +53,9 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { useTheme } from '../composables/useTheme';
+
+const { theme, toggleTheme } = useTheme();
 
 const props = defineProps({
   usuario: {
@@ -61,7 +64,7 @@ const props = defineProps({
   }
 });
 
-defineEmits(['cerrar-sesion', 'abrir-configuracion', 'toggle-tema']);
+defineEmits(['cerrar-sesion', 'abrir-configuracion']);
 
 const isOpen = ref(false);
 
@@ -72,6 +75,23 @@ const toggleDropdown = () => {
 const closeDropdown = () => {
   isOpen.value = false;
 };
+
+// Acciones del tema
+const toggleThemeMode = () => {
+  toggleTheme();
+};
+
+const themeText = computed(() => {
+  if (theme.value === 'dark') return 'Oscuro';
+  if (theme.value === 'light') return 'Claro';
+  return 'Sistema';
+});
+
+const themeIconClass = computed(() => {
+  if (theme.value === 'dark') return 'ti ti-moon';
+  if (theme.value === 'light') return 'ti ti-sun';
+  return 'ti ti-device-desktop';
+});
 
 // Computamos las iniciales (Ej: "Ivan Leon" -> "IL")
 const iniciales = computed(() => {
@@ -119,8 +139,8 @@ const vClickOutside = {
 }
 
 .profile-trigger:hover, .profile-trigger.is-active {
-  background-color: #f8fafc;
-  border-color: #e2e8f0;
+  background-color: var(--bg-element);
+  border-color: var(--border-color);
 }
 
 .avatar {
@@ -143,35 +163,35 @@ const vClickOutside = {
   top: calc(100% + 8px);
   right: 0;
   width: 240px;
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   overflow: hidden;
 }
 
-.dropdown-header { padding: 16px; background-color: #f8fafc; }
-.header-name { margin: 0; font-weight: 600; font-size: 0.95rem; color: #1e293b; }
-.header-email { margin: 4px 0 0 0; font-size: 0.8rem; color: #64748b; word-break: break-all; }
+.dropdown-header { padding: 16px; background-color: var(--bg-element); }
+.header-name { margin: 0; font-weight: 600; font-size: 0.95rem; color: var(--text-main); }
+.header-email { margin: 4px 0 0 0; font-size: 0.8rem; color: var(--text-muted); word-break: break-all; }
 
-.dropdown-divider { height: 1px; background-color: #e2e8f0; margin: 0; }
+.dropdown-divider { height: 1px; background-color: var(--border-color); margin: 0; }
 
 .dropdown-list { list-style: none; margin: 0; padding: 8px; display: flex; flex-direction: column; gap: 4px; }
 
 .dropdown-item {
   display: flex; align-items: center; gap: 10px; width: 100%;
   padding: 10px 12px; background: transparent; border: none; border-radius: 8px;
-  color: #475569; font-size: 0.9rem; font-weight: 500; text-align: left;
+  color: var(--text-main); font-size: 0.9rem; font-weight: 500; text-align: left;
   cursor: pointer; transition: all 0.2s ease;
 }
 
-.dropdown-item:hover { background-color: #f1f5f9; color: #1e293b; }
-.dropdown-item i { color: #64748b; font-size: 1.15rem; }
+.dropdown-item:hover { background-color: var(--bg-element-hover); color: var(--primary); }
+.dropdown-item i { color: var(--text-muted); font-size: 1.15rem; }
 
-.dropdown-item.text-danger { color: #ef4444; }
-.dropdown-item.text-danger i { color: #ef4444; }
-.dropdown-item.text-danger:hover { background-color: #fef2f2; }
+.dropdown-item.text-danger { color: var(--danger-text); }
+.dropdown-item.text-danger i { color: var(--danger-text); }
+.dropdown-item.text-danger:hover { background-color: var(--danger-bg); }
 
 /* Animación de entrada/salida */
 .dropdown-fade-enter-active, .dropdown-fade-leave-active { transition: opacity 0.2s, transform 0.2s; }

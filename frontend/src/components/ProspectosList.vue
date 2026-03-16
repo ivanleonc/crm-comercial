@@ -10,7 +10,7 @@
           <p class="text-muted">Vista tabular detallada de todos los clientes y su estado en el pipeline.</p>
         </div>
       </div>
-      
+
       <button class="btn-nuevo-prospecto" @click="$emit('abrir-registro')">
         <i class="ti ti-plus"></i>
         Nuevo Prospecto
@@ -53,9 +53,9 @@
               {{ c.asesor_asignado }}
             </td>
             <td>
-               <button class="btn-action" title="Ver detalles" @click="$emit('ver-detalles', c)">
-                  <i class="ti ti-eye"></i>
-               </button>
+              <button class="btn-action" title="Ver detalles" @click="$emit('ver-detalles', c)">
+                <i class="ti ti-eye"></i>
+              </button>
             </td>
           </tr>
         </tbody>
@@ -83,15 +83,47 @@ defineEmits(['abrir-registro', 'ver-detalles']);
 }
 
 /* --- ENCABEZADO DE SECCIÓN --- */
-.section-header { margin-bottom: 32px; padding: 0 4px; display: flex; justify-content: space-between; align-items: center; }
-.header-left { display: flex; align-items: center; gap: 16px; }
-.header-icon {
-  display: flex; justify-content: center; align-items: center; width: 48px; height: 48px;
-  background-color: #f0fdfa; color: #0d9488; border-radius: 12px;
+.section-header {
+  margin-bottom: 32px;
+  padding: 0 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.header-icon-inner { font-size: 1.5rem; }
-.section-header h2 { margin: 0 0 4px 0; font-size: 1.5rem; color: var(--text-main); font-weight: 700; letter-spacing: -0.025em; }
-.section-header p { margin: 0; font-size: 0.95rem; }
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  background-color: var(--bg-element);
+  color: var(--primary);
+  border-radius: 12px;
+}
+
+.header-icon-inner {
+  font-size: 1.5rem;
+}
+
+.section-header h2 {
+  margin: 0 0 4px 0;
+  font-size: 1.5rem;
+  color: var(--text-main);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.section-header p {
+  margin: 0;
+  font-size: 0.95rem;
+}
 
 /* Botón Nuevo Prospecto */
 .btn-nuevo-prospecto {
@@ -115,48 +147,81 @@ defineEmits(['abrir-registro', 'ver-detalles']);
   transform: translateY(-1px);
   box-shadow: 0 6px 12px -2px rgba(79, 70, 229, 0.3);
 }
-.btn-nuevo-prospecto i { font-size: 1.25rem; }
+
+.btn-nuevo-prospecto i {
+  font-size: 1.25rem;
+}
 
 /* --- TABLA --- */
 .table-container {
-  overflow-x: auto; 
+  overflow-x: auto;
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg); 
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   background: var(--bg-surface);
 }
-.modern-table { width: 100%; border-collapse: collapse; text-align: left; }
+
+.modern-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
 .modern-table th {
-  background: #F8FAFC; color: var(--text-muted); font-size: 0.75rem;
-  text-transform: uppercase; letter-spacing: 0.5px; padding: 16px 20px; 
+  background: var(--bg-app);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 16px 20px;
   border-bottom: 1px solid var(--border-color);
   font-weight: 600;
 }
-.modern-table td { padding: 16px 20px; border-bottom: 1px solid var(--border-color); font-size: 0.9rem; color: var(--text-main); }
-.modern-table tr:hover { background-color: #f8fafc; transition: background-color 0.2s ease; }
-.modern-table tr:last-child td { border-bottom: none; }
+
+.modern-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.modern-table tr:hover {
+  background-color: var(--bg-element);
+  transition: background-color 0.2s ease;
+}
+
+.modern-table tr:last-child td {
+  border-bottom: none;
+}
 
 /* Elementos de tabla */
-.client-cell { display: flex; align-items: center; gap: 12px; }
-.client-avatar {
-  display: flex; justify-content: center; align-items: center;
-  width: 36px; height: 36px; background: #e2e8f0; color: #475569;
-  border-radius: 50%; font-weight: 700; font-size: 0.85rem;
+.client-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-.asesor-cell { display: flex; align-items: center; gap: 6px; color: var(--text-muted); }
-.asesor-cell i { font-size: 1.1rem; }
 
-/* Badges de Estado */
-.status-badge { 
-  padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; 
-  font-weight: 600; display: inline-flex; align-items: center; justify-content: center;
-  white-space: nowrap;
+.client-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-avatar);
+  color: var(--text-avatar);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
 }
-.status-prospecto { background-color: #F1F5F9; color: #475569; border: 1px solid #E2E8F0; }
-.status-contacto-inicial { background-color: #DBEAFE; color: #1E40AF; border: 1px solid #BFDBFE; }
-.status-propuesta-enviada { background-color: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
-.status-negociacion { background-color: #FFEDD5; color: #C2410C; border: 1px solid #FED7AA; }
-.status-cerrado-ganado { background-color: #D1FAE5; color: #065F46; border: 1px solid #A7F3D0; }
+
+.asesor-cell {
+  align-items: center;
+}
+
+.asesor-cell i {
+  font-size: 1.1rem;
+}
+
 
 .btn-action {
   background: transparent;
@@ -170,17 +235,35 @@ defineEmits(['abrir-registro', 'ver-detalles']);
   cursor: pointer;
   transition: all 0.2s;
 }
+
 .btn-action:hover {
-  background: #f1f5f9;
+  background: var(--bg-element);
   color: var(--primary);
 }
-.btn-action i { font-size: 1.25rem; }
+
+.btn-action i {
+  font-size: 1.25rem;
+}
 
 /* Estado Vacío */
 .empty-state {
-  text-align: center; padding: 64px 24px; border: 1px dashed var(--border-color);
-  border-radius: var(--radius-lg); background-color: var(--bg-surface);
+  text-align: center;
+  padding: 64px 24px;
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-surface);
 }
-.empty-icon { color: #cbd5e1; margin-bottom: 20px; font-size: 4rem; }
-.empty-state h3 { margin: 0 0 8px 0; color: var(--text-main); font-size: 1.25rem; font-weight: 600;}
+
+.empty-icon {
+  color: #cbd5e1;
+  margin-bottom: 20px;
+  font-size: 4rem;
+}
+
+.empty-state h3 {
+  margin: 0 0 8px 0;
+  color: var(--text-main);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
 </style>

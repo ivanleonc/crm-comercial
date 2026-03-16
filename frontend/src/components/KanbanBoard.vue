@@ -136,7 +136,7 @@ const onCambio = async (evento, idEstadoNuevo) => {
   align-items: center;
   width: 48px;
   height: 48px;
-  background-color: #e0e7ff;
+  background-color: var(--bg-element);
   color: var(--primary);
   border-radius: 12px;
 }
@@ -197,7 +197,7 @@ const onCambio = async (evento, idEstadoNuevo) => {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: var(--bg-element);
   border-radius: 8px;
 }
 
@@ -208,7 +208,7 @@ const onCambio = async (evento, idEstadoNuevo) => {
 
 /* --- COLUMNAS --- */
 .kanban-column {
-  background: #f8fafc;
+  background: var(--bg-app);
   border-radius: var(--radius-lg);
   min-width: 320px;
   max-width: 320px;
@@ -275,8 +275,8 @@ const onCambio = async (evento, idEstadoNuevo) => {
 }
 
 .count-badge {
-  background: #e2e8f0;
-  color: #475569;
+  background: var(--bg-avatar);
+  color: var(--text-avatar);
   font-weight: 700;
   padding: 4px 10px;
   border-radius: 20px;
@@ -305,7 +305,7 @@ const onCambio = async (evento, idEstadoNuevo) => {
 .kanban-card:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
-  border-color: #cbd5e1;
+  border-color: var(--primary);
 }
 
 .is-readonly {
@@ -332,7 +332,7 @@ const onCambio = async (evento, idEstadoNuevo) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #f1f5f9;
+  border-top: 1px solid var(--border-color);
   padding-top: 12px;
 }
 
@@ -341,8 +341,8 @@ const onCambio = async (evento, idEstadoNuevo) => {
   align-items: center;
   gap: 6px;
   font-size: 0.75rem;
-  color: #475569;
-  background: #f1f5f9;
+  color: var(--text-avatar);
+  background: var(--bg-avatar);
   padding: 4px 10px;
   border-radius: 20px;
   font-weight: 600;
@@ -351,8 +351,8 @@ const onCambio = async (evento, idEstadoNuevo) => {
 /* --- ANIMACIONES --- */
 .ghost-card {
   opacity: 0.4;
-  background: #e2e8f0;
-  border: 2px dashed #94a3b8;
+  background: var(--bg-element);
+  border: 2px dashed var(--text-muted);
 }
 
 .dragging-card {
@@ -365,9 +365,9 @@ const onCambio = async (evento, idEstadoNuevo) => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #94a3b8;
+  color: var(--text-muted);
   font-size: 0.85rem;
-  border: 2px dashed #e2e8f0;
+  border: 2px dashed var(--border-color);
   border-radius: var(--radius-md);
   padding: 30px 20px;
   margin-top: auto;

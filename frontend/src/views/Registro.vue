@@ -131,21 +131,21 @@ const registrarUsuario = async () => {
 
 /* --- Fondo decorativo SaaS --- */
 .bg-shape { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; opacity: 0.5; }
-.shape-1 { width: 400px; height: 400px; background: #e0e7ff; top: -100px; left: -100px; }
-.shape-2 { width: 300px; height: 300px; background: #fce7f3; bottom: -50px; right: -50px; }
+.shape-1 { width: 400px; height: 400px; background: var(--primary); top: -100px; left: -100px; opacity: 0.15; }
+.shape-2 { width: 300px; height: 300px; background: #ec4899; bottom: -50px; right: -50px; opacity: 0.15; }
 
 /* --- Tarjeta Auth --- */
 .login-card {
   background: var(--bg-surface); padding: 48px 40px; border-radius: 20px;
   box-shadow: var(--shadow-lg); width: 100%; z-index: 1;
-  border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color); backdrop-filter: blur(10px);
 }
 
 /* --- Encabezado Auth --- */
 .brand-header { text-align: center; margin-bottom: 32px; }
 .logo-icon {
   display: inline-flex; justify-content: center; align-items: center;
-  width: 56px; height: 56px; background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+  width: 56px; height: 56px; background: var(--focus-ring);
   color: var(--primary); border-radius: 16px; margin-bottom: 16px;
   box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.1);
 }

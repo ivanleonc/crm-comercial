@@ -43,7 +43,7 @@ defineEmits(['abrir-registro', 'abrir-reportes', 'cerrar-sesion', 'abrir-configu
 <style scoped>
 /* --- CONTENEDOR PRINCIPAL --- */
 .crm-nav {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: var(--bg-surface);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);

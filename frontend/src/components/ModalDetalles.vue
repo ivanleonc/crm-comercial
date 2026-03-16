@@ -124,13 +124,13 @@ const iniciales = computed(() => {
 .asesor-info { display: flex; align-items: center; gap: 8px; }
 .asesor-icon { 
   display: flex; justify-content: center; align-items: center; width: 28px; height: 28px; 
-  background-color: #f1f5f9; color: #475569; border-radius: 50%; font-size: 1.15rem;
+  background-color: var(--bg-avatar); color: var(--text-avatar); border-radius: 50%; font-size: 1.15rem;
 }
 .asesor-info p { margin: 0; font-size: 1rem; color: var(--text-main); font-weight: 600; }
 
 /* Caja de Notas (Empty State) */
 .notas-box { 
-  background: #f8fafc; border: 1px dashed #cbd5e1; padding: 24px; 
+  background: var(--bg-app); border: 1px dashed var(--border-color); padding: 24px; 
   border-radius: var(--radius-md); 
 }
 .empty-notes {
@@ -147,22 +147,13 @@ const iniciales = computed(() => {
 }
 
 .btn-secondary {
-  background-color: white; color: var(--text-main); border: 1px solid var(--border-color);
+  background-color: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border-color);
   padding: 10px 20px; border-radius: var(--radius-md); font-weight: 600; font-size: 0.95rem;
   cursor: pointer; transition: all 0.2s ease;
 }
-.btn-secondary:hover { background-color: #f1f5f9; border-color: #cbd5e1; }
+.btn-secondary:hover { background-color: var(--bg-element); border-color: var(--primary); }
 
 .contactar-btn { display: flex; align-items: center; gap: 8px; }
 
-/* --- BADGES (Mismo estilo que Reportes) --- */
-.status-badge { 
-  padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; 
-  font-weight: 600; display: inline-flex; align-items: center; justify-content: center;
-}
-.status-prospecto { background-color: #F1F5F9; color: #475569; border: 1px solid #E2E8F0; }
-.status-contacto-inicial { background-color: #DBEAFE; color: #1E40AF; border: 1px solid #BFDBFE; }
-.status-propuesta-enviada { background-color: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
-.status-negociacion { background-color: #FFEDD5; color: #C2410C; border: 1px solid #FED7AA; }
-.status-cerrado-ganado { background-color: #D1FAE5; color: #065F46; border: 1px solid #A7F3D0; }
+
 </style>
