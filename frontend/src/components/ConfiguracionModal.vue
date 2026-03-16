@@ -1,3 +1,49 @@
+<script setup>
+import { ref, reactive, computed } from 'vue';
+
+const props = defineProps({
+    usuario: {
+        type: Object,
+        required: true
+    }
+});
+
+const emit = defineEmits(['cerrar', 'guardar-perfil']);
+
+// Estado de navegación
+const activeTab = ref('perfil');
+
+// Estado del formulario (Hacemos una copia local para no mutar la prop directamente)
+const formData = reactive({
+    nombre: props.usuario.nombre || '',
+    email: props.usuario.email || '',
+    rol: props.usuario.rol || '',
+    telefono: props.usuario.telefono || ''
+});
+
+// Estado de los toggles de notificaciones
+const notificaciones = reactive({
+    nuevosProspectos: true,
+    recordatorios: true
+});
+
+// Iniciales para el Avatar
+const iniciales = computed(() => {
+    if (!formData.nombre) return 'U';
+    const partes = formData.nombre.trim().split(' ');
+    if (partes.length > 1) {
+        return (partes[0][0] + partes[1][0]).toUpperCase();
+    }
+    return formData.nombre.substring(0, 2).toUpperCase();
+});
+
+const guardarCambios = () => {
+    // Aquí puedes validar datos antes de emitir
+    emit('guardar-perfil', { ...formData });
+    // Opcional: mostrar un toast de éxito y cerrar
+    emit('cerrar');
+};
+</script>
 <template>
     <div class="modal-overlay" @click.self="$emit('cerrar')">
         <div class="modal-container">
@@ -127,53 +173,6 @@
     </div>
 </template>
 
-<script setup>
-import { ref, reactive, computed } from 'vue';
-
-const props = defineProps({
-    usuario: {
-        type: Object,
-        required: true
-    }
-});
-
-const emit = defineEmits(['cerrar', 'guardar-perfil']);
-
-// Estado de navegación
-const activeTab = ref('perfil');
-
-// Estado del formulario (Hacemos una copia local para no mutar la prop directamente)
-const formData = reactive({
-    nombre: props.usuario.nombre || '',
-    email: props.usuario.email || '',
-    rol: props.usuario.rol || '',
-    telefono: props.usuario.telefono || ''
-});
-
-// Estado de los toggles de notificaciones
-const notificaciones = reactive({
-    nuevosProspectos: true,
-    recordatorios: true
-});
-
-// Iniciales para el Avatar
-const iniciales = computed(() => {
-    if (!formData.nombre) return 'U';
-    const partes = formData.nombre.trim().split(' ');
-    if (partes.length > 1) {
-        return (partes[0][0] + partes[1][0]).toUpperCase();
-    }
-    return formData.nombre.substring(0, 2).toUpperCase();
-});
-
-const guardarCambios = () => {
-    // Aquí puedes validar datos antes de emitir
-    emit('guardar-perfil', { ...formData });
-    // Opcional: mostrar un toast de éxito y cerrar
-    emit('cerrar');
-};
-</script>
-
 <style scoped>
 /* --- OVERLAY DEL MODAL --- */
 .modal-overlay {
@@ -258,7 +257,7 @@ const guardarCambios = () => {
     width: 240px;
     border-right: 1px solid var(--border-color, #e2e8f0);
     padding: 24px 16px;
-    background-color: var(--bg-element-light, #f8fafc);
+    background-color: var(--bg-surface, #f8fafc);
     overflow-y: auto;
 }
 

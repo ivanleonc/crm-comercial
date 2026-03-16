@@ -16,4 +16,6 @@ router.post('/', verificarRol(['Admin']), clientesController.crearCliente);
 // Admin y Asesor pueden mover las tarjetas en el Kanban
 router.put('/:id/estado', verificarRol(['Admin', 'Asesor']), clientesController.actualizarEstado);
 
+router.get('/:id/historial', clientesController.obtenerHistorialCliente);
+
 module.exports = router;
