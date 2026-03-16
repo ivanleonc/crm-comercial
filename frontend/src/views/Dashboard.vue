@@ -12,14 +12,17 @@
     @cerrar-sesion="cerrarSesion" />
 
   <div class="dashboard-wrapper">
-    <Sidebar @abrir-reportes="mostrarModalReportes = true" />
+    <Sidebar :vistaActiva="vistaActiva" @abrir-reportes="mostrarModalReportes = true" @cambiar-vista="v => vistaActiva = v" />
 
     <main class="dashboard-main">
       <ModalRegistro v-if="mostrarModal" @cerrar="mostrarModal = false" @guardado="clienteGuardadoExito" />
 
       <ModalReportes v-if="mostrarModalReportes" :clientes="listaClientes" @cerrar="mostrarModalReportes = false" />
+      <ModalDetalles v-if="modalAbierto" :cliente="clienteSeleccionado" @cerrar="modalAbierto = false" />
 
-      <KanbanBoard :clientes="listaClientes" @estado-actualizado="cargarDatos" @abrir-registro="mostrarModal = true" />
+      <KanbanBoard v-if="vistaActiva === 'tablero'" :clientes="listaClientes" @estado-actualizado="cargarDatos" @abrir-registro="mostrarModal = true" @ver-detalles="abrirDetalles" />
+      
+      <ProspectosList v-if="vistaActiva === 'prospectos'" :clientes="listaClientes" @abrir-registro="mostrarModal = true" @ver-detalles="abrirDetalles" />
     </main>
   </div>
 </template>
@@ -33,12 +36,24 @@ import Sidebar from '../components/Sidebar.vue';
 import ModalRegistro from '../components/ModalRegistro.vue';
 import ModalReportes from '../components/ModalReportes.vue';
 import KanbanBoard from '../components/KanbanBoard.vue';
+import ProspectosList from '../components/ProspectosList.vue';
+import ModalDetalles from '../components/ModalDetalles.vue';
 
 const router = useRouter();
 const listaClientes = ref([]);
 const notificacion = ref('');
 const mostrarModal = ref(false);
 const mostrarModalReportes = ref(false);
+const vistaActiva = ref('tablero'); // Control de vistas: 'tablero', 'prospectos'
+
+// Estado del ModalDetalles (se abre desde Kanban o ProspectosList)
+const modalAbierto = ref(false);
+const clienteSeleccionado = ref(null);
+
+const abrirDetalles = (cliente) => {
+  clienteSeleccionado.value = cliente;
+  modalAbierto.value = true;
+};
 
 // 1. Obtenemos el usuario logueado desde el localStorage
 const usuarioActual = ref(JSON.parse(localStorage.getItem('usuario')) || { nombre: 'Usuario', rol: 'Desconocido' });

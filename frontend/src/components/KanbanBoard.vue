@@ -42,7 +42,7 @@
           ghost-class="ghost-card" drag-class="dragging-card" :animation="200" :disabled="esLector"
           @change="onCambio($event, estado.id)">
           <template #item="{ element: cliente }">
-            <div class="kanban-card" :class="{ 'is-readonly': esLector }" @click="abrirDetalles(cliente)">
+            <div class="kanban-card" :class="{ 'is-readonly': esLector }" @click="$emit('ver-detalles', cliente)">
               <h4 class="card-title">{{ cliente.nombre_cliente }}</h4>
 
               <div class="card-company">
@@ -83,7 +83,6 @@
       </div>
     </div>
 
-    <ModalDetalles v-if="modalAbierto" :cliente="clienteSeleccionado" @cerrar="modalAbierto = false" />
   </section>
 </template>
 
@@ -91,19 +90,15 @@
 import { ref, watch, computed } from 'vue';
 import draggable from 'vuedraggable';
 import api from '../services/api';
-import ModalDetalles from './ModalDetalles.vue';
 
 const props = defineProps({ clientes: Array });
-const emit = defineEmits(['estado-actualizado', 'abrir-registro']);
+const emit = defineEmits(['estado-actualizado', 'abrir-registro', 'ver-detalles']);
 
 // Obtenemos el usuario del LocalStorage para saber su rol
 const usuarioActual = ref(JSON.parse(localStorage.getItem('usuario')) || { rol: 'Lector' });
 
 // Propiedad computada que nos dice si es Lector (true o false)
 const esLector = computed(() => usuarioActual.value.rol === 'Lector');
-
-const clienteSeleccionado = ref(null);
-const modalAbierto = ref(false);
 
 const estados = ref([
   { id: 1, nombre: 'Prospecto' },
@@ -135,11 +130,6 @@ const onCambio = async (evento, idEstadoNuevo) => {
       emit('estado-actualizado');
     }
   }
-};
-
-const abrirDetalles = (cliente) => {
-  clienteSeleccionado.value = cliente;
-  modalAbierto.value = true;
 };
 </script>
 
