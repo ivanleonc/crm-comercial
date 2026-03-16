@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { authService } from './authService';
+import { clienteService } from './clienteService';
 
 // 1. Configuramos la instancia base de Axios
 const api = axios.create({
@@ -19,44 +21,6 @@ api.interceptors.request.use((config) => {
 
 // 3. Exportamos los métodos limpios
 export default {
-  // --- RUTAS DE CLIENTES ---
-  async obtenerClientes() {
-    const res = await api.get('/clientes');
-    return res.data; // Axios guarda la respuesta del server dentro de ".data"
-  },
-  async obtenerHistorialCliente(idCliente) {
-    try {
-      const response = await api.get(`/clientes/${idCliente}/historial`);
-      return response.data;
-    } catch (error) {
-      console.error("Error al obtener el historial:", error);
-      throw error;
-    }
-  },
-  // OBTENER LISTA DE ASESORES
-  async obtenerAsesores() {
-    const res = await api.get('/usuarios');
-    return res.data;
-  },
-
-  async crearCliente(cliente) {
-    const res = await api.post('/clientes', cliente);
-    return res.data;
-  },
-
-  async actualizarEstado(id, idEstadoNuevo) {
-    const res = await api.put(`/clientes/${id}/estado`, { id_estado_nuevo: idEstadoNuevo });
-    return res.data;
-  },
-
-  // --- RUTAS DE AUTENTICACIÓN ---
-  async login(credenciales) {
-    const res = await api.post('/auth/login', credenciales);
-    return res.data;
-  },
-
-  async register(usuario) {
-    const res = await api.post('/auth/register', usuario);
-    return res.data;
-  }
+  ...authService,
+  ...clienteService
 };
