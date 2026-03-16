@@ -1,36 +1,26 @@
 <template>
   <div v-if="notificacion" class="toast-notificacion">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
       <polyline points="22 4 12 14.01 9 11.01"></polyline>
     </svg>
     <span>{{ notificacion }}</span>
   </div>
 
-  <Navbar 
-    :usuario="usuarioActual"
-    @abrir-registro="mostrarModal = true" 
-    @abrir-reportes="mostrarModalReportes = true" 
-    @cerrar-sesion="cerrarSesion"
-  />
+  <Navbar :usuario="usuarioActual" @abrir-registro="mostrarModal = true" @abrir-reportes="mostrarModalReportes = true"
+    @cerrar-sesion="cerrarSesion" />
 
-  <div class="contenedor-principal">
-    <ModalRegistro 
-      v-if="mostrarModal" 
-      @cerrar="mostrarModal = false" 
-      @guardado="clienteGuardadoExito" 
-    />
+  <div class="dashboard-wrapper">
+    <Sidebar @abrir-reportes="mostrarModalReportes = true" />
 
-    <ModalReportes 
-      v-if="mostrarModalReportes" 
-      :clientes="listaClientes" 
-      @cerrar="mostrarModalReportes = false" 
-    />
+    <main class="dashboard-main">
+      <ModalRegistro v-if="mostrarModal" @cerrar="mostrarModal = false" @guardado="clienteGuardadoExito" />
 
-    <KanbanBoard 
-      :clientes="listaClientes" 
-      @estado-actualizado="cargarDatos" 
-    />
+      <ModalReportes v-if="mostrarModalReportes" :clientes="listaClientes" @cerrar="mostrarModalReportes = false" />
+
+      <KanbanBoard :clientes="listaClientes" @estado-actualizado="cargarDatos" @abrir-registro="mostrarModal = true" />
+    </main>
   </div>
 </template>
 
@@ -39,6 +29,7 @@ import { ref, onMounted } from 'vue';
 import api from '../services/api';
 import { useRouter } from 'vue-router';
 import Navbar from '../components/Navbar.vue';
+import Sidebar from '../components/Sidebar.vue';
 import ModalRegistro from '../components/ModalRegistro.vue';
 import ModalReportes from '../components/ModalReportes.vue';
 import KanbanBoard from '../components/KanbanBoard.vue';
@@ -46,8 +37,8 @@ import KanbanBoard from '../components/KanbanBoard.vue';
 const router = useRouter();
 const listaClientes = ref([]);
 const notificacion = ref('');
-const mostrarModal = ref(false); 
-const mostrarModalReportes = ref(false); 
+const mostrarModal = ref(false);
+const mostrarModalReportes = ref(false);
 
 // 1. Obtenemos el usuario logueado desde el localStorage
 const usuarioActual = ref(JSON.parse(localStorage.getItem('usuario')) || { nombre: 'Usuario', rol: 'Desconocido' });

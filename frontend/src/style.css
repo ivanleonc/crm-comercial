@@ -33,6 +33,25 @@ body {
 }
 .contenedor-principal { padding: 0 24px 24px 24px; max-width: 1400px; margin: auto; }
 
+/* --- ESTRUCTURA DE LAYOUT (SIDEBAR + MAIN) --- */
+.dashboard-wrapper {
+  display: flex;
+  min-height: calc(100vh - 72px); /* Altura total menos el navbar */
+  margin-top: 0; /* Removing manual margin since the body padding handles the navbar */
+}
+
+.dashboard-main {
+  flex: 1;
+  margin-left: 72px; /* Ancho del sidebar colapsado */
+  padding: 24px;
+  min-width: 0; /* Previene overflow en flexbox */
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dashboard-sidebar:hover ~ .dashboard-main {
+  margin-left: 260px;
+}
+
 /* --- INPUTS Y SELECTS PREMIUM GLOBALES --- */
 input, select {
   width: 100%;
