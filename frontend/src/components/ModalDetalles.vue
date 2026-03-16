@@ -2,10 +2,7 @@
   <div class="modal-overlay" @click.self="$emit('cerrar')">
     <div class="modal-content modal-md">
       <button class="cerrar-modal" @click="$emit('cerrar')" title="Cerrar (Esc)">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
+        <i class="ti ti-x"></i>
       </button>
 
       <div class="detalle-header">
@@ -15,11 +12,7 @@
         <div class="info-principal">
           <h2>{{ cliente.nombre_cliente }}</h2>
           <div class="empresa-tag">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
-              <path d="M9 22v-4h6v4"></path>
-              <path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M16 10h.01M8 10h.01M8 14h.01M12 14h.01M16 14h.01"></path>
-            </svg>
+            <i class="ti ti-building"></i>
             <span>{{ cliente.empresa }}</span>
           </div>
         </div>
@@ -42,10 +35,7 @@
           <label>Asesor Comercial</label>
           <div class="asesor-info">
             <div class="asesor-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
+              <i class="ti ti-user"></i>
             </div>
             <p>{{ cliente.asesor_asignado }}</p>
           </div>
@@ -55,13 +45,7 @@
           <label>Notas y Actividad</label>
           <div class="notas-box">
             <div class="empty-notes">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-              </svg>
+              <i class="ti ti-clipboard-text empty-icon"></i>
               <p>Aún no hay notas registradas para este prospecto. Aquí podrás agregar el historial de reuniones y seguimientos.</p>
             </div>
           </div>
@@ -71,10 +55,7 @@
       <div class="detalle-footer">
         <button type="button" class="btn-secondary" @click="$emit('cerrar')">Cerrar Perfil</button>
         <button type="button" class="btn-primary contactar-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
-          </svg>
+          <i class="ti ti-headset"></i>
           Contactar Cliente
         </button>
       </div>
@@ -143,7 +124,7 @@ const iniciales = computed(() => {
 .asesor-info { display: flex; align-items: center; gap: 8px; }
 .asesor-icon { 
   display: flex; justify-content: center; align-items: center; width: 28px; height: 28px; 
-  background-color: #f1f5f9; color: #475569; border-radius: 50%; 
+  background-color: #f1f5f9; color: #475569; border-radius: 50%; font-size: 1.15rem;
 }
 .asesor-info p { margin: 0; font-size: 1rem; color: var(--text-main); font-weight: 600; }
 
@@ -156,6 +137,7 @@ const iniciales = computed(() => {
   display: flex; flex-direction: column; align-items: center; text-align: center;
   color: #94a3b8; gap: 12px;
 }
+.empty-icon { font-size: 2rem; color: #cbd5e1; }
 .empty-notes p { margin: 0; font-size: 0.9rem; max-width: 400px; line-height: 1.5; }
 
 /* --- PIE DEL MODAL (Botones) --- */

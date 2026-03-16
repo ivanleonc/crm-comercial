@@ -2,19 +2,12 @@
   <div class="modal-overlay" @click.self="$emit('cerrar')">
     <div class="modal-content modal-xl">
       <button class="cerrar-modal" @click="$emit('cerrar')" title="Cerrar (Esc)">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
+        <i class="ti ti-x"></i>
       </button>
 
       <div class="modal-header">
         <div class="header-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="20" x2="18" y2="10"></line>
-            <line x1="12" y1="20" x2="12" y2="4"></line>
-            <line x1="6" y1="20" x2="6" y2="14"></line>
-          </svg>
+          <i class="ti ti-chart-bar header-icon-inner"></i>
         </div>
         <div>
           <h2>Reporte General de Clientes</h2>
@@ -23,11 +16,7 @@
       </div>
       
       <div v-if="clientes.length === 0" class="empty-state">
-        <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-          <line x1="3" y1="9" x2="21" y2="9"></line>
-          <line x1="9" y1="21" x2="9" y2="9"></line>
-        </svg>
+        <i class="ti ti-database-off empty-icon"></i>
         <h3>No hay datos disponibles</h3>
         <p class="text-muted">Aún no se han registrado clientes en el sistema.</p>
       </div>
@@ -57,7 +46,7 @@
                 </span>
               </td>
               <td class="asesor-cell">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <i class="ti ti-user"></i>
                 {{ c.asesor_asignado }}
               </td>
             </tr>
@@ -90,6 +79,7 @@ defineEmits(['cerrar']);
   display: flex; justify-content: center; align-items: center; width: 48px; height: 48px;
   background-color: #f0fdfa; color: #0d9488; border-radius: 12px; /* Verde esmeralda para reportes */
 }
+.header-icon-inner { font-size: 1.5rem; }
 .modal-header h2 { margin: 0 0 4px 0; font-size: 1.25rem; color: var(--text-main); }
 .modal-header p { margin: 0; font-size: 0.9rem; }
 
@@ -120,6 +110,7 @@ defineEmits(['cerrar']);
 
 /* Celda del Asesor */
 .asesor-cell { display: flex; align-items: center; gap: 6px; color: var(--text-muted); }
+.asesor-cell i { font-size: 1.1rem; }
 
 /* Badges de Estado Premium */
 .status-badge { 
@@ -139,6 +130,6 @@ defineEmits(['cerrar']);
   text-align: center; padding: 48px 24px; border: 1px dashed var(--border-color);
   border-radius: var(--radius-lg); background-color: #f8fafc;
 }
-.empty-icon { color: #cbd5e1; margin-bottom: 16px; }
+.empty-icon { color: #cbd5e1; margin-bottom: 16px; font-size: 3rem; }
 .empty-state h3 { margin: 0 0 8px 0; color: var(--text-main); font-size: 1.1rem; }
 </style>

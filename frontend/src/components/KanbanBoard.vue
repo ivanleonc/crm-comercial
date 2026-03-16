@@ -3,12 +3,7 @@
     <div class="section-header">
       <div class="header-left">
         <div class="header-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="9" y1="3" x2="9" y2="21"></line>
-            <line x1="15" y1="3" x2="15" y2="21"></line>
-          </svg>
+          <i class="ti ti-layout-kanban header-icon-inner"></i>
         </div>
         <div>
           <h2>Pipeline de Ventas</h2>
@@ -17,11 +12,7 @@
       </div>
 
       <button v-if="!esLector" class="btn-nuevo-prospecto" @click="$emit('abrir-registro')">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-        </svg>
+        <i class="ti ti-plus"></i>
         Nuevo Prospecto
       </button>
     </div>
@@ -46,22 +37,13 @@
               <h4 class="card-title">{{ cliente.nombre_cliente }}</h4>
 
               <div class="card-company">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
-                  <path d="M9 22v-4h6v4"></path>
-                  <path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M16 10h.01M8 10h.01M8 14h.01M12 14h.01M16 14h.01"></path>
-                </svg>
+                <i class="ti ti-building"></i>
                 <span>{{ cliente.empresa }}</span>
               </div>
 
               <div class="card-footer">
                 <div class="asesor-tag">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
+                  <i class="ti ti-user"></i>
                   <span>{{ cliente.asesor_asignado }}</span>
                 </div>
               </div>
@@ -70,13 +52,7 @@
         </draggable>
 
         <div v-if="!listasPorEstado[estado.id] || listasPorEstado[estado.id].length === 0" class="empty-zone">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-            style="margin-bottom: 8px; color: #cbd5e1;">
-            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-            <polyline points="17 21 17 13 7 13 7 21"></polyline>
-            <polyline points="7 3 7 8 15 8"></polyline>
-          </svg>
+          <i class="ti ti-inbox empty-zone-icon"></i>
           <span>Soltar tarjeta aquí</span>
         </div>
 
@@ -164,6 +140,9 @@ const onCambio = async (evento, idEstadoNuevo) => {
   color: var(--primary);
   border-radius: 12px;
 }
+.header-icon-inner {
+  font-size: 1.5rem;
+}
 
 .section-header h2 {
   margin: 0 0 4px 0;
@@ -200,6 +179,7 @@ const onCambio = async (evento, idEstadoNuevo) => {
   transform: translateY(-1px);
   box-shadow: 0 6px 12px -2px rgba(79, 70, 229, 0.3);
 }
+.btn-nuevo-prospecto i { font-size: 1.25rem; }
 
 /* --- ESTRUCTURA DEL TABLERO --- */
 .kanban-container {
@@ -391,5 +371,10 @@ const onCambio = async (evento, idEstadoNuevo) => {
   border-radius: var(--radius-md);
   padding: 30px 20px;
   margin-top: auto;
+}
+.empty-zone-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: #cbd5e1;
 }
 </style>

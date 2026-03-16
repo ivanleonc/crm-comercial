@@ -2,11 +2,7 @@
   <nav class="crm-nav">
     <div class="nav-brand">
       <div class="brand-logo">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7-4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-          <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-          <line x1="12" y1="22.08" x2="12" y2="12"></line>
-        </svg>
+        <i class="ti ti-brand-appstore brand-icon"></i>
       </div>
       <span>CRM Comercial</span>
     </div>
@@ -14,11 +10,7 @@
     <ul class="nav-menu">
       <li>
         <a href="#" class="nav-link" @click.prevent="$emit('abrir-reportes')">
-          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="20" x2="18" y2="10"></line>
-            <line x1="12" y1="20" x2="12" y2="4"></line>
-            <line x1="6" y1="20" x2="6" y2="14"></line>
-          </svg>
+          <i class="ti ti-chart-bar nav-icon"></i>
           Reportes
         </a>
       </li>
@@ -74,6 +66,7 @@ defineEmits(['abrir-registro', 'abrir-reportes', 'cerrar-sesion', 'abrir-configu
   color: white; border-radius: 10px;
   box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
 }
+.brand-icon { font-size: 1.4rem; }
 
 /* --- MENÚ CENTRAL --- */
 .nav-menu { list-style: none; display: flex; gap: 8px; margin: 0; padding: 0; }
@@ -82,7 +75,7 @@ defineEmits(['abrir-registro', 'abrir-reportes', 'cerrar-sesion', 'abrir-configu
   color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem;
   padding: 8px 16px; border-radius: var(--radius-md); transition: all 0.2s ease;
 }
-.nav-icon { transition: transform 0.2s ease; }
+.nav-icon { transition: transform 0.2s ease; font-size: 1.15rem; }
 .nav-link:hover { background-color: #f1f5f9; color: var(--primary); }
 .nav-link:hover .nav-icon { transform: scale(1.1); } 
 

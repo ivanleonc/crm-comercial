@@ -3,12 +3,7 @@
     <div class="section-header">
       <div class="header-left">
         <div class="header-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
+          <i class="ti ti-users header-icon-inner"></i>
         </div>
         <div>
           <h2>Directorio de Prospectos</h2>
@@ -17,21 +12,13 @@
       </div>
       
       <button class="btn-nuevo-prospecto" @click="$emit('abrir-registro')">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-        </svg>
+        <i class="ti ti-plus"></i>
         Nuevo Prospecto
       </button>
     </div>
 
     <div v-if="clientes.length === 0" class="empty-state">
-      <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-        <line x1="3" y1="9" x2="21" y2="9"></line>
-        <line x1="9" y1="21" x2="9" y2="9"></line>
-      </svg>
+      <i class="ti ti-folder-open empty-icon"></i>
       <h3>No hay prospectos disponibles</h3>
       <p class="text-muted">Aún no se han registrado prospectos en el sistema.</p>
     </div>
@@ -62,15 +49,12 @@
               </span>
             </td>
             <td class="asesor-cell">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <i class="ti ti-user"></i>
               {{ c.asesor_asignado }}
             </td>
             <td>
                <button class="btn-action" title="Ver detalles" @click="$emit('ver-detalles', c)">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                  </svg>
+                  <i class="ti ti-eye"></i>
                </button>
             </td>
           </tr>
@@ -105,6 +89,7 @@ defineEmits(['abrir-registro', 'ver-detalles']);
   display: flex; justify-content: center; align-items: center; width: 48px; height: 48px;
   background-color: #f0fdfa; color: #0d9488; border-radius: 12px;
 }
+.header-icon-inner { font-size: 1.5rem; }
 .section-header h2 { margin: 0 0 4px 0; font-size: 1.5rem; color: var(--text-main); font-weight: 700; letter-spacing: -0.025em; }
 .section-header p { margin: 0; font-size: 0.95rem; }
 
@@ -130,6 +115,7 @@ defineEmits(['abrir-registro', 'ver-detalles']);
   transform: translateY(-1px);
   box-shadow: 0 6px 12px -2px rgba(79, 70, 229, 0.3);
 }
+.btn-nuevo-prospecto i { font-size: 1.25rem; }
 
 /* --- TABLA --- */
 .table-container {
@@ -158,6 +144,7 @@ defineEmits(['abrir-registro', 'ver-detalles']);
   border-radius: 50%; font-weight: 700; font-size: 0.85rem;
 }
 .asesor-cell { display: flex; align-items: center; gap: 6px; color: var(--text-muted); }
+.asesor-cell i { font-size: 1.1rem; }
 
 /* Badges de Estado */
 .status-badge { 
@@ -187,12 +174,13 @@ defineEmits(['abrir-registro', 'ver-detalles']);
   background: #f1f5f9;
   color: var(--primary);
 }
+.btn-action i { font-size: 1.25rem; }
 
 /* Estado Vacío */
 .empty-state {
   text-align: center; padding: 64px 24px; border: 1px dashed var(--border-color);
   border-radius: var(--radius-lg); background-color: var(--bg-surface);
 }
-.empty-icon { color: #cbd5e1; margin-bottom: 20px; }
+.empty-icon { color: #cbd5e1; margin-bottom: 20px; font-size: 4rem; }
 .empty-state h3 { margin: 0 0 8px 0; color: var(--text-main); font-size: 1.25rem; font-weight: 600;}
 </style>

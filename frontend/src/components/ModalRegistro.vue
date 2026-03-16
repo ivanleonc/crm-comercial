@@ -2,20 +2,12 @@
   <div class="modal-overlay" @click.self="$emit('cerrar')">
     <div class="modal-content modal-lg">
       <button class="cerrar-modal" @click="$emit('cerrar')" title="Cerrar (Esc)">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
+        <i class="ti ti-x"></i>
       </button>
 
       <div class="modal-header">
         <div class="header-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="8.5" cy="7" r="4"></circle>
-            <line x1="20" y1="8" x2="20" y2="14"></line>
-            <line x1="23" y1="11" x2="17" y2="11"></line>
-          </svg>
+          <i class="ti ti-user-plus header-icon-inner"></i>
         </div>
         <div>
           <h2>Registrar Prospecto</h2>
@@ -48,7 +40,7 @@
                 {{ asesor.nombre }}
               </option>
             </select>
-            <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <i class="ti ti-chevron-down select-icon"></i>
           </div>
         </div>
 
@@ -60,7 +52,7 @@
               <option value="2">📞 Contacto Inicial</option>
               <option value="3">📄 Propuesta Enviada</option>
             </select>
-            <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <i class="ti ti-chevron-down select-icon"></i>
           </div>
         </div>
 
@@ -71,12 +63,12 @@
               <option value="1">💻 Software ERP Empresarial</option>
               <option value="2">⚙️ Consultoría IT Especializada</option>
             </select>
-            <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <i class="ti ti-chevron-down select-icon"></i>
           </div>
         </div>
 
         <div v-if="errorMsg" class="error-msg shake full-width">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <i class="ti ti-alert-circle"></i>
           <span>{{ errorMsg }}</span>
         </div>
 
@@ -86,7 +78,7 @@
           <button type="submit" class="btn-primary" :disabled="cargando">
             <span v-if="!cargando">Guardar Prospecto</span>
             <span v-else class="loading-state">
-              <svg class="spinner" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+              <i class="ti ti-loader-2 spinner"></i>
               Guardando...
             </span>
           </button>
@@ -152,6 +144,7 @@ onMounted(cargarAsesores);
   display: flex; justify-content: center; align-items: center; width: 48px; height: 48px;
   background-color: #e0e7ff; color: var(--primary); border-radius: 12px;
 }
+.header-icon-inner { font-size: 1.5rem; }
 .modal-header h2 { margin: 0 0 4px 0; font-size: 1.25rem; color: var(--text-main); }
 .modal-header p { margin: 0; font-size: 0.9rem; }
 
@@ -164,7 +157,7 @@ onMounted(cargarAsesores);
 /* Ajustes para los Selects y su flecha personalizada */
 .select-wrapper { position: relative; }
 select { cursor: pointer; appearance: none; padding-right: 36px; }
-.select-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #64748b; pointer-events: none; }
+.select-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #64748b; pointer-events: none; font-size: 1.25rem; }
 
 /* Botones de acción inferiores */
 .modal-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 10px; border-top: 1px solid var(--border-color); padding-top: 20px;}
@@ -177,7 +170,7 @@ select { cursor: pointer; appearance: none; padding-right: 36px; }
 .btn-secondary:hover { background-color: #f1f5f9; border-color: #cbd5e1; }
 
 .loading-state { display: flex; align-items: center; gap: 8px; }
-.spinner { animation: spin 1s linear infinite; }
+.spinner { animation: spin 1s linear infinite; font-size: 1.25rem; }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
 /* Deshabilitar interacciones mientras carga */

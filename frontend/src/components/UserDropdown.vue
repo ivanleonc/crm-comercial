@@ -9,9 +9,7 @@
         <span class="user-name">{{ usuario.nombre }}</span>
         <span class="user-role">{{ usuario.rol }}</span>
       </div>
-      <svg class="chevron-icon" :class="{ 'rotate': isOpen }" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
+      <i class="ti ti-chevron-down chevron-icon" :class="{ 'rotate': isOpen }"></i>
     </button>
 
     <transition name="dropdown-fade">
@@ -26,13 +24,13 @@
         <ul class="dropdown-list">
           <li>
             <button class="dropdown-item" @click.stop="$emit('abrir-configuracion'); closeDropdown()">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <i class="ti ti-settings"></i>
               Configuración
             </button>
           </li>
           <li>
             <button class="dropdown-item" @click.stop="$emit('toggle-tema'); closeDropdown()">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+              <i class="ti ti-moon"></i>
               Modo Oscuro
             </button>
           </li>
@@ -43,7 +41,7 @@
         <ul class="dropdown-list">
           <li>
             <button class="dropdown-item text-danger" @click.stop="$emit('cerrar-sesion')">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+              <i class="ti ti-logout"></i>
               Cerrar Sesión
             </button>
           </li>
@@ -136,7 +134,7 @@ const vClickOutside = {
 .user-name { font-weight: 600; font-size: 0.9rem; color: var(--text-main); line-height: 1.2; }
 .user-role { font-size: 0.75rem; color: #64748b; line-height: 1.2; margin-top: 2px; }
 
-.chevron-icon { color: #94a3b8; transition: transform 0.3s ease; }
+.chevron-icon { color: #94a3b8; transition: transform 0.3s ease; font-size: 1.1rem;}
 .chevron-icon.rotate { transform: rotate(180deg); }
 
 /* --- MENÚ DESPLEGABLE --- */
@@ -169,10 +167,10 @@ const vClickOutside = {
 }
 
 .dropdown-item:hover { background-color: #f1f5f9; color: #1e293b; }
-.dropdown-item svg { color: #64748b; }
+.dropdown-item i { color: #64748b; font-size: 1.15rem; }
 
 .dropdown-item.text-danger { color: #ef4444; }
-.dropdown-item.text-danger svg { color: #ef4444; }
+.dropdown-item.text-danger i { color: #ef4444; }
 .dropdown-item.text-danger:hover { background-color: #fef2f2; }
 
 /* Animación de entrada/salida */
